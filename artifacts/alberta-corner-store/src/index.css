@@ -224,8 +224,9 @@ body::before {
 .hero-eyebrow {
   font-family: 'DM Sans', sans-serif;
   font-size: 11px;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.18em;
   color: var(--stucco-gold);
   margin-bottom: 20px;
   display: block;
@@ -289,10 +290,11 @@ body::before {
 .eyebrow {
   font-family: 'DM Sans', sans-serif;
   font-size: 11px;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--stucco-gold);
-  margin-bottom: 24px;
+  letter-spacing: 0.18em;
+  color: #A0904A;
+  margin-bottom: 16px;
   display: block;
 }
 
@@ -328,6 +330,7 @@ body::before {
 /* Who We Are */
 .who-we-are {
   background: var(--cream);
+  border-top: 3px solid var(--store-green);
 }
 
 .owners-photo {
@@ -443,19 +446,30 @@ body::before {
 /* Ask section */
 .ask-section {
   background: var(--aged-paper);
-  padding: 80px 24px;
+  padding: 96px 24px;
   text-align: center;
+  position: relative;
+}
+
+.ask-section::before {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: var(--store-green);
+  margin: 0 auto 48px;
+  opacity: 0.4;
 }
 
 .ask-inner {
-  max-width: 720px;
+  max-width: 680px;
   margin: 0 auto;
 }
 
 .ask-heading {
   font-family: 'Playfair Display', Georgia, serif;
   font-weight: 900;
-  font-size: clamp(36px, 6vw, 56px);
+  font-size: clamp(32px, 5.5vw, 52px);
   color: var(--store-green);
   margin-bottom: 28px;
   line-height: 1.1;
@@ -465,8 +479,8 @@ body::before {
   font-family: 'Libre Baskerville', Georgia, serif;
   font-size: 17px;
   line-height: 1.75;
-  color: var(--ink);
-  margin-bottom: 40px;
+  color: #3a3828;
+  margin-bottom: 32px;
 }
 
 .cta-btn {

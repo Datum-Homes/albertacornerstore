@@ -47,10 +47,13 @@ export default function Landing() {
       <section className="section who-we-are">
         <div className="section-inner">
           <span className="eyebrow">WHO WE ARE</span>
+          <h2 className="section-heading-plain" style={{ marginBottom: "24px" }}>
+            A small group of Calgarians.
+          </h2>
           <div className="body-text">
             <p>
-              We're a small group of Calgarians who bought this building because
-              we didn't want to see it become something forgettable.
+              We bought this building because we didn't want to see it become
+              something forgettable.
             </p>
             <p>
               We're not a big developer. We don't have a concept locked in. What
