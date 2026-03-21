@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Alberta Corner Store"
+version = "1.0.0"
+id = "artifacts/alberta-corner-store"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 21433
+
+[services.development]
+run = "pnpm --filter @workspace/alberta-corner-store run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/alberta-corner-store", "run", "build" ]
+publicDir = "artifacts/alberta-corner-store/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "21433"
+BASE_PATH = "/"
