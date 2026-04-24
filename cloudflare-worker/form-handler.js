@@ -22,7 +22,6 @@ const CORS_HEADERS = {
 
 export default {
   async fetch(request, env) {
-    // Handle CORS preflight
     if (request.method === "OPTIONS") {
       return new Response(null, { status: 204, headers: CORS_HEADERS });
     }
@@ -31,7 +30,6 @@ export default {
       return respond({ error: "Method not allowed" }, 405);
     }
 
-    // Parse URL-encoded body
     let body;
     try {
       const text = await request.text();
@@ -64,11 +62,17 @@ export default {
       return respond({ error: "Captcha verification failed" }, 400);
     }
 
-    // Pull form fields
-    const q1 = body.get("q1_feeling") || "(not answered)";
-    const q2 = body.get("q2_missing") || "(not answered)";
-    const q3 = body.get("q3_avoid") || "(not answered)";
-    const submitterEmail = body.get("email") || "(not provided)";
+    // Pull all form fields
+    const q1  = body.get("q1_feeling")    || "(not answered)";
+    const q2  = body.get("q2_uses")       || "(not answered)";
+    const q3  = body.get("q3_missing")    || "(not answered)";
+    const q4  = body.get("q4_products")   || "(not answered)";
+    const q5  = body.get("q5_avoid")      || "(not answered)";
+    const q6  = body.get("q6_direction")  || "(not answered)";
+    const q6c = body.get("q6_comment")    || "";
+    const neighbourhood = body.get("neighbourhood") || "(not provided)";
+    const name          = body.get("name")          || "(not provided)";
+    const email         = body.get("email")         || "(not provided)";
 
     const receivedAt = new Date().toLocaleString("en-CA", {
       timeZone: "America/Edmonton",
@@ -76,26 +80,37 @@ export default {
       timeStyle: "short",
     });
 
-    // Build email body
     const emailBody = [
       `New submission — Alberta Corner Store`,
       `Received: ${receivedAt} (Mountain Time)`,
       ``,
-      `─────────────────────────────────`,
+      `─────────────────────────────────────────`,
       `Q1 — What should it feel like?`,
       q1,
       ``,
-      `Q2 — What is Ramsay missing?`,
+      `Q2 — What uses would you like to see?`,
       q2,
       ``,
-      `Q3 — What would you hate to see?`,
+      `Q3 — What is Ramsay missing?`,
       q3,
       ``,
-      `Email for updates: ${submitterEmail}`,
-      `─────────────────────────────────`,
-    ].join("\r\n");
+      `Q4 — If corner store, what would you buy?`,
+      q4,
+      ``,
+      `Q5 — What would you hate to see?`,
+      q5,
+      ``,
+      `Q6 — Does the current direction feel right?`,
+      q6,
+      q6c ? `Comment: ${q6c}` : "",
+      ``,
+      `─────────────────────────────────────────`,
+      `Connection to Ramsay: ${neighbourhood}`,
+      `Name: ${name}`,
+      `Email for updates: ${email}`,
+      `─────────────────────────────────────────`,
+    ].filter((line, i, arr) => !(line === "" && arr[i - 1] === "")).join("\r\n");
 
-    // Assemble raw MIME message
     const rawMime = [
       `MIME-Version: 1.0`,
       `From: Alberta Corner Store <${env.FROM_EMAIL}>`,
@@ -106,7 +121,6 @@ export default {
       emailBody,
     ].join("\r\n");
 
-    // Send via Cloudflare Email Workers
     try {
       const message = new EmailMessage(env.FROM_EMAIL, env.DESTINATION_EMAIL, rawMime);
       await env.SEND_EMAIL.send(message);

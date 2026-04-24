@@ -172,10 +172,10 @@ export default function Landing() {
             What should this place be for Ramsay?
           </h2>
           <p className="ask-body">
-            We have some ideas. But ideas from owners who don't live here are
-            worth less than honest input from the people who do. If you've
-            walked past this building, shopped here, or just noticed the lights
-            were off — we want to hear from you.
+            We have ideas — but before anything is decided, we want to hear
+            from the people who know this neighbourhood best. If you've walked
+            past this building, shopped here, or just noticed the lights were
+            off — we want to hear from you.
           </p>
           <p className="ask-body" style={{ marginBottom: "36px" }}>
             It takes 90 seconds. There are three questions. No wrong answers.
