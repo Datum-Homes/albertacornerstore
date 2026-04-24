@@ -1,7 +1,9 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
+import { Turnstile } from "@marsidev/react-turnstile";
 
-const FORMSPREE_URL = "https://formspree.io/f/mreyvldn";
+const WORKER_URL = import.meta.env.VITE_WORKER_URL as string;
+const TURNSTILE_SITE_KEY = (import.meta.env.VITE_TURNSTILE_SITE_KEY ?? "1x00000000000000000000AA") as string;
 
 const radioOptions = [
   "A warm, grab-and-go spot — coffee, snacks, familiar faces",
@@ -20,7 +22,8 @@ export default function InputForm() {
   const [loading, setLoading] = useState(false);
   const [formError, setFormError] = useState(false);
   const [q1Error, setQ1Error] = useState(false);
-  const q1Ref = useRef<HTMLDivElement>(null);
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const [captchaError, setCaptchaError] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -31,30 +34,33 @@ export default function InputForm() {
 
     if (!selected) {
       setQ1Error(true);
-      q1Ref.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+      document.querySelector<HTMLDivElement>(".question-block")?.scrollIntoView({ behavior: "smooth", block: "center" });
+      return;
+    }
+
+    if (!turnstileToken) {
+      setCaptchaError(true);
       return;
     }
 
     setQ1Error(false);
     setFormError(false);
+    setCaptchaError(false);
     setLoading(true);
 
-    const formData = {
+    const body = new URLSearchParams({
       q1_feeling: selected,
       q2_missing: q2,
       q3_avoid: q3,
       email: email,
-      _gotcha: (e.currentTarget.querySelector(".honeypot") as HTMLInputElement)?.value ?? "",
-    };
+      "cf-turnstile-response": turnstileToken,
+    });
 
     try {
-      const res = await fetch(FORMSPREE_URL, {
+      const res = await fetch(WORKER_URL, {
         method: "POST",
-        headers: {
-          "Accept": "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: body.toString(),
       });
 
       if (res.ok) {
@@ -98,11 +104,9 @@ export default function InputForm() {
 
       <div className="form-container">
         <form onSubmit={handleSubmit} noValidate>
-          {/* Honeypot */}
-          <input type="text" name="_gotcha" className="honeypot" tabIndex={-1} autoComplete="off" />
 
           {/* Question 1 */}
-          <div ref={q1Ref} className={`question-block ${q1Error ? "has-error" : ""}`}>
+          <div className={`question-block ${q1Error ? "has-error" : ""}`}>
             <label className="question-label">QUESTION 1 OF 3</label>
             <p className="question-text">
               When you picture the ideal version of this corner store,
@@ -188,7 +192,25 @@ export default function InputForm() {
             <p className="consent-note">We'll send one email. We won't share your address.</p>
           </div>
 
-          {/* Error message */}
+          {/* Turnstile */}
+          <div className="turnstile-wrapper">
+            <Turnstile
+              siteKey={TURNSTILE_SITE_KEY}
+              onSuccess={(token) => { setTurnstileToken(token); setCaptchaError(false); }}
+              onError={() => { setTurnstileToken(null); setCaptchaError(true); }}
+              onExpire={() => setTurnstileToken(null)}
+              options={{ theme: "light" }}
+            />
+          </div>
+
+          {/* Captcha error */}
+          {captchaError && (
+            <p className="captcha-error" role="alert">
+              Verification didn't complete — please wait a moment and try again.
+            </p>
+          )}
+
+          {/* General error */}
           <div className={`form-error-msg ${formError ? "visible" : ""}`} role="alert">
             Something went wrong with the submission. You can also reach us directly at{" "}
             <strong>hello@albertacornerstore.ca</strong>.

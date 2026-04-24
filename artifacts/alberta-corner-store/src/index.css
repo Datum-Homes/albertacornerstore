@@ -811,9 +811,16 @@ body::before {
   margin-top: 8px;
 }
 
-/* Honeypot */
-.honeypot {
-  display: none !important;
+/* Turnstile */
+.turnstile-wrapper {
+  padding: 20px 0 4px;
+}
+
+.captcha-error {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--rust);
+  margin-bottom: 12px;
 }
 
 /* Submit button */
