@@ -5,14 +5,10 @@
  *
  * Environment variables to set in the Worker settings:
  *   TURNSTILE_SECRET_KEY  — from Cloudflare Turnstile dashboard
- *   FROM_EMAIL            — e.g. noreply@yourdomain.com (must be on your Cloudflare domain)
- *   DESTINATION_EMAIL     — your personal inbox (must be verified in Email Routing)
- *
- * Bindings to add in the Worker settings:
- *   SEND_EMAIL            — "Send Email" binding, pointed at your destination address
+ *   RESEND_API_KEY        — from resend.com
+ *   FROM_EMAIL            — e.g. form@albertacornerstore.com
+ *   DESTINATION_EMAIL     — your personal inbox
  */
-
-import { EmailMessage } from "cloudflare:email";
 
 const CORS_HEADERS = {
   "Access-Control-Allow-Origin": "*",
@@ -80,7 +76,7 @@ export default {
       timeStyle: "short",
     });
 
-    const emailBody = [
+    const emailText = [
       `New submission — Alberta Corner Store`,
       `Received: ${receivedAt} (Mountain Time)`,
       ``,
@@ -109,23 +105,26 @@ export default {
       `Name: ${name}`,
       `Email for updates: ${email}`,
       `─────────────────────────────────────────`,
-    ].filter((line, i, arr) => !(line === "" && arr[i - 1] === "")).join("\r\n");
+    ].filter((line, i, arr) => !(line === "" && arr[i - 1] === "")).join("\n");
 
-    const rawMime = [
-      `MIME-Version: 1.0`,
-      `From: Alberta Corner Store <${env.FROM_EMAIL}>`,
-      `To: ${env.DESTINATION_EMAIL}`,
-      `Subject: New submission — Alberta Corner Store`,
-      `Content-Type: text/plain; charset=utf-8`,
-      ``,
-      emailBody,
-    ].join("\r\n");
+    // Send via Resend
+    const sendRes = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${env.RESEND_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: `Alberta Corner Store <${env.FROM_EMAIL}>`,
+        to: env.DESTINATION_EMAIL,
+        subject: "New submission — Alberta Corner Store",
+        text: emailText,
+      }),
+    });
 
-    try {
-      const message = new EmailMessage(env.FROM_EMAIL, env.DESTINATION_EMAIL, rawMime);
-      await env.SEND_EMAIL.send(message);
-    } catch (err) {
-      console.error("Email send failed:", err);
+    if (!sendRes.ok) {
+      const err = await sendRes.text();
+      console.error("Resend error:", err);
       return respond({ error: "Failed to send email" }, 500);
     }
 

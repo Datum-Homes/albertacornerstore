@@ -404,7 +404,7 @@ export default function InputForm() {
           {/* Datum Homes */}
           <p className="datum-link">
             Want to know more about the team behind this project?{" "}
-            <a href="https://datumhomes.ca" target="_blank" rel="noopener noreferrer">
+            <a href="https://datumhomes.com" target="_blank" rel="noopener noreferrer">
               Learn about Datum Homes
             </a>
           </p>
