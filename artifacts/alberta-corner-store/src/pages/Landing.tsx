@@ -153,11 +153,12 @@ export default function Landing() {
         </div>
       </section>
 
-      <hr className="divider-gold" style={{ maxWidth: "720px", margin: "0 auto" }} />
+      <hr className="divider-brick" />
 
       {/* Section 2 — The Story */}
-      <section className="section">
+      <section className="section story-section">
         <div className="section-inner">
+          <span className="eyebrow">THE STORY</span>
           <h2 className="section-heading">What this place has meant to Ramsay</h2>
           <div className="body-text">
             <p>
@@ -200,11 +201,25 @@ export default function Landing() {
         </div>
       </section>
 
+      <hr className="divider-brick" />
+
       {/* Timeline */}
       <section className="timeline-section" ref={timelineRef}>
-        <div className="timeline-inner">
-          <motion.span className="eyebrow" variants={fadeInUp} initial="initial" whileInView="animate" viewport={{ once: true }}>WHERE WE ARE</motion.span>
-          <motion.h2 className="timeline-heading" variants={fadeInUp} initial="initial" whileInView="animate" viewport={{ once: true }}>How this unfolds</motion.h2>
+        <motion.div 
+          className="timeline-inner"
+          variants={staggerContainer}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          <motion.span 
+            className="eyebrow" 
+            variants={fadeInUp}
+            style={{ position: "relative", zIndex: 10 }}
+          >
+            WHERE WE ARE
+          </motion.span>
+          <motion.h2 className="timeline-heading" variants={fadeInUp}>How this unfolds</motion.h2>
           
           <div className="timeline-container" style={{ position: "relative" }}>
             <div className="timeline-line-bg" style={{ position: "absolute", left: "11px", top: "8px", bottom: "8px", width: "1px", background: "rgba(200, 185, 107, 0.2)" }} />
@@ -248,7 +263,7 @@ export default function Landing() {
               ))}
             </ul>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       <hr className="divider-gold" style={{ maxWidth: "720px", margin: "0 auto" }} />

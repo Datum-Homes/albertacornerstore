@@ -12,6 +12,7 @@
   --rust: #8B4A2A;
   --brick-red: #B84A2A;
   --brick-red-hover: #9E3D21;
+  --deep-brown: #241B16;
 }
 
 * {
@@ -76,7 +77,7 @@ body::before {
 
 /* Focus states */
 *:focus-visible {
-  outline: 2px solid var(--store-green);
+  outline: 2px solid var(--brick-red);
   outline-offset: 2px;
 }
 
@@ -84,6 +85,14 @@ body::before {
 .divider-gold {
   border: none;
   border-top: 1px solid var(--stucco-gold);
+}
+
+.divider-brick {
+  border: none;
+  border-top: 1.5px solid var(--brick-red);
+  width: 100%;
+  margin: 0;
+  opacity: 0.4;
 }
 
 /* Animations */
@@ -263,6 +272,50 @@ body::before {
   margin: 0 auto;
 }
 
+/* Section 2 — The Story */
+.story-section {
+  background: var(--deep-brown);
+  color: var(--warm-white);
+  padding: 140px 24px;
+  position: relative;
+}
+
+.story-section .eyebrow {
+  color: var(--brick-red);
+}
+
+.story-section .section-heading {
+  color: var(--warm-white);
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 32px;
+  font-style: italic;
+  margin-bottom: 28px;
+  line-height: 1.25;
+}
+
+.story-section .body-text {
+  color: rgba(253, 250, 244, 0.8);
+}
+
+.story-section .pull-quote-large {
+  border-left-color: var(--brick-red);
+}
+
+.story-section .pull-quote-large blockquote,
+.story-section .pull-quote-small blockquote {
+  color: var(--warm-white);
+}
+
+.story-section .pull-quote-small {
+  background: rgba(184, 74, 42, 0.1);
+  border-left-color: var(--brick-red);
+}
+
+.story-section .video-framing {
+  color: var(--stucco-gold);
+}
+
+
 .eyebrow {
   font-family: 'DM Sans', sans-serif;
   font-size: 11px;
@@ -306,7 +359,7 @@ body::before {
 /* Who We Are */
 .who-we-are {
   background: var(--cream);
-  border-top: 3px solid var(--store-green);
+  border-top: 3px solid var(--brick-red);
   position: relative;
   z-index: 2;
   margin-top: -60px;
@@ -467,7 +520,7 @@ body::before {
   font-family: 'Playfair Display', Georgia, serif;
   font-style: italic;
   font-size: 20px;
-  background: var(--brick-red);
+  background: var(--store-green);
   color: var(--warm-white);
   border: none;
   padding: 20px 48px;
@@ -1146,20 +1199,8 @@ body::before {
 /* Timeline section */
 .timeline-section {
   background: var(--aged-paper);
-  padding: 100px 24px;
+  padding: 120px 24px;
   position: relative;
-  overflow: hidden;
-}
-
-.timeline-section::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 120px;
-  background: linear-gradient(to bottom, var(--cream), var(--aged-paper));
-  pointer-events: none;
 }
 
 .timeline-inner {
@@ -1239,7 +1280,7 @@ body::before {
 }
 
 .timeline-item.is-active .timeline-date {
-  color: var(--brick-red);
+  color: var(--store-green);
 }
 
 .timeline-label {
