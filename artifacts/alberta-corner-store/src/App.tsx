@@ -8,7 +8,7 @@ function Nav() {
     <nav className="site-nav" aria-label="Site navigation">
       <div className="nav-inner">
         <Link href="/" className="nav-logo">
-          Alberta Corner Store
+          Alberta Corner<br />Store
         </Link>
         <Link href="/input" className="nav-cta">
           Share Your Input

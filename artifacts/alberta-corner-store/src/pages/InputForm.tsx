@@ -152,7 +152,7 @@ export default function InputForm() {
       <div className="form-header">
         <div
           className="form-header-bg"
-          style={{ backgroundImage: "url('/exterior_signage.png')" }}
+          style={{ backgroundImage: "url('/exterior_signage.jpg')" }}
           aria-hidden="true"
         />
         <div className="form-header-overlay" aria-hidden="true" />
