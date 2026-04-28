@@ -641,6 +641,7 @@ body::before {
   display: flex;
   align-items: center;
   gap: 6px;
+  font-weight: 500;
 }
 
 /* Form */
@@ -661,17 +662,19 @@ body::before {
 
 .question-label {
   font-family: 'DM Sans', sans-serif;
-  font-size: 10px;
+  font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: var(--stucco-gold);
+  color: var(--store-green);
   display: block;
   margin-bottom: 12px;
+  font-weight: 600;
+  opacity: 0.8;
 }
 
 .question-text {
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: 22px;
+  font-size: 20px;
   color: var(--store-green);
   line-height: 1.35;
   margin-bottom: 24px;
