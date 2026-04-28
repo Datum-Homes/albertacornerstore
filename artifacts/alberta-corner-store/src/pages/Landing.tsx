@@ -27,13 +27,19 @@ export default function Landing() {
     <main>
       {/* Hero */}
       <section className="hero">
-        <motion.div
-          className="hero-bg"
-          style={{ backgroundImage: "url('/testhero2.jpg')" }}
+        <motion.video
+          className="hero-bg hero-video"
+          poster="/poster_img.webp"
+          autoPlay
+          muted
+          loop
+          playsInline
           variants={heroZoom}
           initial="initial"
           animate="animate"
-        />
+        >
+          <source src="/hero-video.mp4" type="video/mp4" />
+        </motion.video>
         <div className="hero-gradient" />
         <motion.div 
           className="hero-year"
@@ -85,7 +91,7 @@ export default function Landing() {
 
       {/* Why This Matters */}
       <section className="why-section">
-        <motion.div 
+        <motion.div
           className="why-inner"
           variants={staggerContainer}
           initial="initial"
@@ -115,6 +121,21 @@ export default function Landing() {
               </motion.div>
             ))}
           </div>
+          <motion.div
+            className="why-accent-image"
+            variants={clipPathReveal}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true, amount: 0.3 }}
+            style={{ marginTop: "48px" }}
+          >
+            <img
+              src="/building-signband.webp"
+              alt="The Alberta Corner Store signage showing 'GROCERIES · ALBERTA CORNER STORE · DRY GOODS' across the building facade"
+              loading="lazy"
+              style={{ maxWidth: "400px", marginLeft: "auto", marginRight: "auto", display: "block" }}
+            />
+          </motion.div>
         </motion.div>
       </section>
 
@@ -141,7 +162,7 @@ export default function Landing() {
           </div>
           <motion.div variants={clipPathReveal} initial="initial" whileInView="whileInView" viewport={{ once: true, amount: 0.2 }}>
             <img
-              src="/ownersphoto.jpg"
+              src="/ownersphoto.webp"
               alt="Two people standing in front of the Alberta Corner Store building at 922 19 Ave SE"
               className="owners-photo"
               loading="eager"
@@ -296,7 +317,7 @@ export default function Landing() {
               initial="initial"
               whileInView="whileInView"
               viewport={{ once: true }}
-              src="/exterior_signage.jpg"
+              src="/exterior_signage.webp"
               alt="The Alberta Corner Store building showing the full GROCERIES · ALBERTA CORNER STORE · DRY GOODS sign band"
               loading="lazy"
             />
@@ -305,8 +326,8 @@ export default function Landing() {
               initial="initial"
               whileInView="whileInView"
               viewport={{ once: true }}
-              src="/interior1.jpg"
-              alt="Interior of the Alberta Corner Store showing original shelving and hardwood floors"
+              src="/storefront-window-display.webp"
+              alt="Storefront window of the Alberta Corner Store showing retail display items visible through the glass"
               loading="lazy"
             />
           </div>
