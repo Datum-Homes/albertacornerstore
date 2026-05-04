@@ -162,6 +162,93 @@ body::before {
   color: var(--warm-white);
 }
 
+/* Sticky Nav */
+.sticky-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(245, 240, 232, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(200, 185, 107, 0.3);
+  padding: 12px 24px;
+  box-shadow: 0 4px 20px rgba(26, 26, 20, 0.05);
+}
+
+.sticky-nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+
+.sticky-nav-logo {
+  font-family: 'Big Shoulders Display', 'Arial Black', sans-serif;
+  font-weight: 900;
+  font-size: 18px;
+  text-transform: uppercase;
+  color: var(--store-green);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+
+.sticky-nav-links {
+  display: flex;
+  gap: 16px;
+}
+
+.sticky-nav-link {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--sidewalk-grey);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.sticky-nav-link:hover {
+  color: var(--store-green);
+}
+
+.sticky-nav-cta {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--warm-white);
+  background: var(--store-green);
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: opacity 0.2s;
+  display: flex;
+  align-items: center;
+  border-radius: 2px;
+}
+
+.sticky-nav-cta:hover {
+  opacity: 0.9;
+}
+
+.sticky-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+
+@media (max-width: 768px) {
+  .sticky-nav-links {
+    display: none;
+  }
+}
+
 /* Hero */
 .hero {
   position: relative;
@@ -1367,34 +1454,55 @@ body::before {
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 14px 18px;
+  padding: 20px 24px;
   background: var(--warm-white);
   border: 1.5px solid transparent;
-  font-family: 'Libre Baskerville', Georgia, serif;
-  font-size: 15px;
   color: var(--ink);
-  line-height: 1.5;
-  min-height: 52px;
   text-decoration: none;
-  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
 }
 
 .home-q1-option:hover {
-  background: var(--store-green);
-  color: var(--warm-white);
+  background: var(--warm-white);
   border-color: var(--store-green);
+  transform: translateX(4px);
+}
+
+.option-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.option-title {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--store-green);
+}
+
+.option-desc {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 14px;
+  color: var(--sidewalk-grey);
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.home-q1-option:hover .option-title {
+  color: var(--brick-red);
 }
 
 .home-q1-arrow {
   margin-left: auto;
-  font-size: 14px;
-  opacity: 0;
-  transition: opacity 0.15s;
-  flex-shrink: 0;
+  font-size: 18px;
+  color: var(--stucco-gold);
+  transition: transform 0.2s, color 0.2s;
 }
 
 .home-q1-option:hover .home-q1-arrow {
-  opacity: 1;
+  transform: translateX(4px);
+  color: var(--brick-red);
 }
 
 .home-form-note {

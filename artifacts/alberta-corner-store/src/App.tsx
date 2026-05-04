@@ -1,20 +1,44 @@
-import { Switch, Route, Router as WouterRouter, Link } from "wouter";
+import { useState } from "react";
+import { Switch, Route, Router as WouterRouter, Link, useLocation } from "wouter";
+import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
 import Landing from "@/pages/Landing";
 import InputForm from "@/pages/InputForm";
 import ThankYou from "@/pages/ThankYou";
 
 function Nav() {
+  const [location] = useLocation();
+  const [isHidden, setIsHidden] = useState(false);
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    // Only hide on landing page
+    if (location === "/" && latest > window.innerHeight * 0.75) {
+      setIsHidden(true);
+    } else {
+      setIsHidden(false);
+    }
+  });
+
   return (
-    <nav className="site-nav" aria-label="Site navigation">
+    <motion.nav 
+      className="site-nav" 
+      aria-label="Site navigation"
+      initial={{ y: 0, opacity: 1 }}
+      animate={{ 
+        y: isHidden ? -100 : 0,
+        opacity: isHidden ? 0 : 1 
+      }}
+      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+    >
       <div className="nav-inner">
         <Link href="/" className="nav-logo">
           Alberta Corner<br />Store
         </Link>
         <Link href="/input" className="nav-cta">
-          Share Your Input
+          Share Your Vision
         </Link>
       </div>
-    </nav>
+    </motion.nav>
   );
 }
 
