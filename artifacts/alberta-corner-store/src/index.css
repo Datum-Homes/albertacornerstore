@@ -13,6 +13,13 @@
   --brick-red: #B84A2A;
   --brick-red-hover: #9E3D21;
   --deep-brown: #241B16;
+
+  /* Typography Roles */
+  --font-brand: 'Big Shoulders Display', 'Arial Black', sans-serif;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-narrative: 'Libre Baskerville', Georgia, serif;
+  --font-ui: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-functional: 'DM Sans', sans-serif;
 }
 
 * {
@@ -28,7 +35,7 @@ html {
 body {
   background-color: var(--cream);
   color: var(--ink);
-  font-family: 'Libre Baskerville', Georgia, serif;
+  font-family: var(--font-narrative);
   -webkit-font-smoothing: antialiased;
   position: relative;
 }
@@ -59,17 +66,17 @@ body::before {
 
 /* Typography */
 .font-display {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: var(--font-display);
 }
 .font-body {
-  font-family: 'Libre Baskerville', Georgia, serif;
+  font-family: var(--font-narrative);
 }
 .font-ui {
-  font-family: 'DM Sans', sans-serif;
+  font-family: var(--font-ui);
 }
 
 .font-brand {
-  font-family: 'Big Shoulders Display', 'Arial Black', sans-serif;
+  font-family: var(--font-brand);
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: -0.01em;
@@ -130,7 +137,7 @@ body::before {
 }
 
 .nav-logo {
-  font-family: 'Big Shoulders Display', 'Arial Black', sans-serif;
+  font-family: var(--font-brand);
   font-weight: 900;
   font-size: 22px;
   text-transform: uppercase;
@@ -141,7 +148,7 @@ body::before {
 }
 
 .nav-cta {
-  font-family: 'DM Sans', sans-serif;
+  font-family: var(--font-ui);
   font-size: 13px;
   font-weight: 500;
   color: var(--store-green);
@@ -187,7 +194,7 @@ body::before {
 }
 
 .sticky-nav-logo {
-  font-family: 'Big Shoulders Display', 'Arial Black', sans-serif;
+  font-family: var(--font-brand);
   font-weight: 900;
   font-size: 18px;
   text-transform: uppercase;
@@ -202,7 +209,7 @@ body::before {
 }
 
 .sticky-nav-link {
-  font-family: 'DM Sans', sans-serif;
+  font-family: var(--font-ui);
   font-size: 11px;
   font-weight: 600;
   text-transform: uppercase;
@@ -217,7 +224,7 @@ body::before {
 }
 
 .sticky-nav-cta {
-  font-family: 'DM Sans', sans-serif;
+  font-family: var(--font-ui);
   font-size: 11px;
   font-weight: 600;
   text-transform: uppercase;
@@ -281,7 +288,7 @@ body::before {
   position: absolute;
   top: 80px;
   right: -10px;
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: var(--font-display);
   font-style: italic;
   font-size: clamp(80px, 15vw, 180px);
   color: rgba(200, 185, 107, 0.10);
@@ -298,7 +305,7 @@ body::before {
 }
 
 .hero-eyebrow {
-  font-family: 'DM Sans', sans-serif;
+  font-family: var(--font-ui);
   font-size: 11px;
   font-weight: 500;
   text-transform: uppercase;
@@ -310,8 +317,6 @@ body::before {
 }
 
 .hero-headline {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-weight: 900;
   font-size: clamp(3rem, 8vw, 7rem);
   line-height: 1.05;
   color: var(--warm-white);
@@ -319,8 +324,19 @@ body::before {
   text-shadow: 0 4px 20px rgba(26, 26, 20, 0.4), 0 1px 2px rgba(26, 26, 20, 0.8);
 }
 
+.hero-headline h1 {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  margin: 0;
+  text-shadow: inherit;
+}
+
 .hero-subtitle {
-  font-family: 'Libre Baskerville', Georgia, serif;
+  font-family: var(--font-ui);
+  font-weight: 400;
   font-size: clamp(1rem, 2vw, 1.25rem);
   color: rgba(253, 250, 244, 0.85);
   margin-bottom: 40px;
@@ -335,7 +351,7 @@ body::before {
 }
 
 .scroll-prompt-text {
-  font-family: 'DM Sans', sans-serif;
+  font-family: var(--font-ui);
   font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -379,7 +395,7 @@ body::before {
 
 .story-section .section-heading {
   color: var(--warm-white);
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: var(--font-display);
   font-size: 32px;
   font-style: italic;
   margin-bottom: 28px;
@@ -410,27 +426,28 @@ body::before {
 
 
 .eyebrow {
-  font-family: 'DM Sans', sans-serif;
+  font-family: var(--font-ui);
   font-size: 11px;
-  font-weight: 500;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  color: #A0904A;
+  color: var(--stucco-gold);
   margin-bottom: 16px;
   display: block;
 }
 
 .section-heading {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 32px;
+  font-family: var(--font-display);
+  font-size: clamp(32px, 5vw, 42px);
   font-style: italic;
+  font-weight: 700;
   color: var(--store-green);
   margin-bottom: 28px;
-  line-height: 1.25;
+  line-height: 1.15;
 }
 
 .section-heading-plain {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: var(--font-display);
   font-size: 24px;
   font-weight: 700;
   color: var(--store-green);
@@ -439,10 +456,11 @@ body::before {
 }
 
 .body-text {
-  font-family: 'Libre Baskerville', Georgia, serif;
-  font-size: 17px;
-  line-height: 1.75;
+  font-family: var(--font-narrative);
+  font-size: 16px;
+  line-height: 1.7;
   color: var(--ink);
+  opacity: 0.95;
 }
 
 .body-text p + p {
@@ -468,7 +486,7 @@ body::before {
 }
 
 .photo-caption {
-  font-family: 'DM Sans', sans-serif;
+  font-family: var(--font-ui);
   font-size: 12px;
   color: var(--sidewalk-grey);
   text-align: center;
@@ -493,7 +511,7 @@ body::before {
 }
 
 .pull-quote-large cite {
-  font-family: 'DM Sans', sans-serif;
+  font-family: var(--font-ui);
   font-size: 13px;
   color: var(--sidewalk-grey);
   font-style: normal;
@@ -516,7 +534,7 @@ body::before {
 }
 
 .pull-quote-small cite {
-  font-family: 'DM Sans', sans-serif;
+  font-family: var(--font-ui);
   font-size: 12px;
   color: var(--sidewalk-grey);
   font-style: normal;
@@ -593,7 +611,7 @@ body::before {
 }
 
 .ask-heading {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: var(--font-display);
   font-weight: 900;
   font-size: clamp(32px, 5.5vw, 52px);
   color: var(--store-green);
@@ -610,7 +628,7 @@ body::before {
 }
 
 .cta-btn {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: var(--font-display);
   font-style: italic;
   font-size: 20px;
   background: var(--store-green);
@@ -631,7 +649,7 @@ body::before {
 }
 
 .trust-line {
-  font-family: 'DM Sans', sans-serif;
+  font-family: var(--font-ui);
   font-size: 13px;
   color: var(--sidewalk-grey);
   font-style: italic;
@@ -656,13 +674,13 @@ body::before {
 }
 
 .footer-left {
-  font-family: 'DM Sans', sans-serif;
+  font-family: var(--font-ui);
   font-size: 13px;
   color: var(--sidewalk-grey);
 }
 
 .footer-right {
-  font-family: 'DM Sans', sans-serif;
+  font-family: var(--font-ui);
   font-size: 13px;
   color: var(--sidewalk-grey);
 }
@@ -700,7 +718,7 @@ body::before {
 }
 
 .form-header-heading {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: var(--font-display);
   font-size: clamp(28px, 5vw, 40px);
   font-weight: 700;
   color: var(--store-green);
@@ -709,11 +727,12 @@ body::before {
 }
 
 .form-header-sub {
-  font-family: 'Libre Baskerville', Georgia, serif;
+  font-family: var(--font-narrative);
   font-style: italic;
   font-size: 18px;
   color: var(--ink);
   line-height: 1.55;
+  opacity: 0.8;
 }
 
 /* Trust signals */
@@ -728,7 +747,7 @@ body::before {
 }
 
 .trust-item {
-  font-family: 'DM Sans', sans-serif;
+  font-family: var(--font-ui);
   font-size: 13px;
   color: var(--sidewalk-grey);
   display: flex;
@@ -754,7 +773,7 @@ body::before {
 }
 
 .question-label {
-  font-family: 'DM Sans', sans-serif;
+  font-family: var(--font-ui);
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.15em;
@@ -766,7 +785,7 @@ body::before {
 }
 
 .question-text {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: var(--font-display);
   font-size: 20px;
   color: var(--store-green);
   line-height: 1.35;
@@ -789,10 +808,11 @@ body::before {
   border: 1.5px solid transparent;
   background: var(--warm-white);
   transition: background 0.15s, color 0.15s, border-color 0.15s;
-  font-family: 'Libre Baskerville', Georgia, serif;
-  font-size: 16px;
+  font-family: var(--font-ui);
+  font-size: 15px;
+  font-weight: 500;
   color: var(--ink);
-  line-height: 1.5;
+  line-height: 1.4;
   min-height: 56px;
   position: relative;
 }
@@ -899,17 +919,18 @@ body::before {
 }
 
 .email-heading {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 20px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 22px;
   color: var(--store-green);
   margin-bottom: 12px;
 }
 
 .email-sub {
-  font-family: 'Libre Baskerville', Georgia, serif;
-  font-size: 15px;
-  color: var(--ink);
-  line-height: 1.65;
+  font-family: var(--font-ui);
+  font-size: 14px;
+  color: var(--sidewalk-grey);
+  line-height: 1.6;
   margin-bottom: 20px;
 }
 
@@ -956,10 +977,11 @@ body::before {
   border: 1.5px solid transparent;
   background: var(--warm-white);
   transition: background 0.15s, color 0.15s, border-color 0.15s;
-  font-family: 'Libre Baskerville', Georgia, serif;
-  font-size: 16px;
+  font-family: var(--font-ui);
+  font-size: 15px;
+  font-weight: 500;
   color: var(--ink);
-  line-height: 1.5;
+  line-height: 1.4;
   min-height: 56px;
   position: relative;
 }
@@ -1109,7 +1131,7 @@ body::before {
 }
 
 .thankyou-heading {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: var(--font-display);
   font-weight: 900;
   font-style: italic;
   font-size: clamp(40px, 8vw, 56px);
@@ -1119,7 +1141,7 @@ body::before {
 }
 
 .thankyou-body {
-  font-family: 'Libre Baskerville', Georgia, serif;
+  font-family: var(--font-narrative);
   font-size: 17px;
   line-height: 1.75;
   color: var(--ink);
@@ -1127,7 +1149,7 @@ body::before {
 }
 
 .thankyou-subheading {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: var(--font-display);
   font-size: 26px;
   color: var(--store-green);
   margin-bottom: 20px;
@@ -1140,7 +1162,7 @@ body::before {
 }
 
 .closing-quote blockquote {
-  font-family: 'Libre Baskerville', Georgia, serif;
+  font-family: var(--font-narrative);
   font-size: 18px;
   font-style: italic;
   color: var(--ink);
@@ -1171,14 +1193,14 @@ body::before {
 }
 
 .share-heading {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: var(--font-display);
   font-size: 20px;
   color: var(--store-green);
   margin-bottom: 12px;
 }
 
 .share-body {
-  font-family: 'Libre Baskerville', Georgia, serif;
+  font-family: var(--font-narrative);
   font-size: 15px;
   color: var(--ink);
   line-height: 1.65;
@@ -1242,7 +1264,7 @@ body::before {
 }
 
 .why-heading {
-  font-family: 'Big Shoulders Display', 'Arial Black', sans-serif;
+  font-family: var(--font-brand);
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: -0.01em;
@@ -1266,7 +1288,7 @@ body::before {
 }
 
 .why-pillar-number {
-  font-family: 'Big Shoulders Display', 'Arial Black', sans-serif;
+  font-family: var(--font-brand);
   font-weight: 900;
   font-size: 48px;
   color: var(--brick-red);
@@ -1286,7 +1308,7 @@ body::before {
 }
 
 .why-pillar-body {
-  font-family: 'Libre Baskerville', Georgia, serif;
+  font-family: var(--font-narrative);
   font-size: 15px;
   line-height: 1.7;
   color: rgba(253, 250, 244, 0.70);

@@ -47,3 +47,6 @@ Thumbs.db
 # Replit
 .cache/
 .local/
+
+# Assets (Hosted in Cloudflare R2)
+attached_assets/

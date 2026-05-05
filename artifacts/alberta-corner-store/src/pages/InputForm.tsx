@@ -152,7 +152,7 @@ export default function InputForm() {
       <div className="form-header">
         <div
           className="form-header-bg"
-          style={{ backgroundImage: "url('/building-streetview.webp')" }}
+          style={{ backgroundImage: "url('https://images.albertacornerstore.com/media/images/IMG_2328.webp')" }}
           role="img"
           aria-label="Alberta Corner Store building viewed from the street in Ramsay, Calgary"
         />

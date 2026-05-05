@@ -82,7 +82,7 @@ export default function Landing() {
       <section className="hero" id="hero">
         <motion.video
           className="hero-bg hero-video"
-          poster="/poster_img.webp"
+          poster="https://images.albertacornerstore.com/media/images/poster_img.webp"
           autoPlay
           muted
           loop
@@ -91,7 +91,7 @@ export default function Landing() {
           initial="initial"
           animate="animate"
         >
-          <source src="/hero-video.mp4" type="video/mp4" />
+          <source src="https://images.albertacornerstore.com/media/videos/ABCS Hero.mp4" type="video/mp4" />
         </motion.video>
         <div className="hero-gradient" />
         <motion.div
@@ -116,7 +116,7 @@ export default function Landing() {
             Ramsay, Calgary · 922 19 Ave SE
           </motion.span>
           <MaskedText className="hero-headline">
-            The Corner Store<br />is coming back.
+            <h1>The Corner Store<br />is coming back.</h1>
           </MaskedText>
           <motion.p className="hero-subtitle" variants={fadeInUp}>
             We just bought it. Before we decide anything,<br className="hidden-mobile" />
@@ -183,7 +183,7 @@ export default function Landing() {
             style={{ marginTop: "48px" }}
           >
             <img
-              src="/building-signband.webp"
+              src="https://images.albertacornerstore.com/media/images/IMG_2317.webp"
               alt="The Alberta Corner Store signage showing 'GROCERIES · ALBERTA CORNER STORE · DRY GOODS' across the building facade"
               loading="lazy"
               style={{ maxWidth: "400px", marginLeft: "auto", marginRight: "auto", display: "block" }}
@@ -347,7 +347,7 @@ export default function Landing() {
             </div>
             <motion.div variants={clipPathReveal} initial="initial" whileInView="whileInView" viewport={{ once: true, amount: 0.2 }}>
               <img
-                src="/ownersphoto.webp"
+                src="https://images.albertacornerstore.com/media/images/ownersphoto_1774129959876.webp"
                 alt="Two people standing in front of the Alberta Corner Store building at 922 19 Ave SE"
                 className="owners-photo"
                 loading="eager"
@@ -389,7 +389,7 @@ export default function Landing() {
                 initial="initial"
                 whileInView="whileInView"
                 viewport={{ once: true }}
-                src="/exterior_signage.webp"
+                src="https://images.albertacornerstore.com/media/images/exterior_signage_1774129959875.webp"
                 alt="The Alberta Corner Store building showing the full GROCERIES · ALBERTA CORNER STORE · DRY GOODS sign band"
                 loading="lazy"
               />
@@ -398,7 +398,7 @@ export default function Landing() {
                 initial="initial"
                 whileInView="whileInView"
                 viewport={{ once: true }}
-                src="/storefront-window-display.webp"
+                src="https://images.albertacornerstore.com/media/images/IMG_2321.webp"
                 alt="Storefront window of the Alberta Corner Store showing retail display items visible through the glass"
                 loading="lazy"
               />
