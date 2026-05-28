@@ -293,9 +293,8 @@ export default function Landing() {
               {[
                 { date: "Early 2026", label: "Building acquired. Renovation begins.", status: "" },
                 { date: "Now", label: "Community input open", status: "active" },
-                { date: "May 2026", label: "We share what we heard & final concept.", status: "future" },
-                { date: "June 2026", label: "Tenant selection finalized.", status: "future" },
-                { date: "July 2026", label: "Doors open.", status: "future" }
+                { date: "Early July 2026", label: "We share what we heard & final concept.", status: "future" },
+                { date: "Summer 2026", label: "Doors open.", status: "future" }
               ].map((item, i) => (
                 <motion.li
                   key={i}

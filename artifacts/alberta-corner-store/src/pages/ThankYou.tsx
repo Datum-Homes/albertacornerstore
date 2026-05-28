@@ -46,7 +46,7 @@ export default function ThankYou() {
         <h2 className="thankyou-subheading">What happens with this?</h2>
         <div className="body-text">
           <p>
-            We're collecting input through <strong>April 15th</strong>. After that, we'll read
+            We're collecting input through <strong>June</strong>. After that, we'll read
             everything, look for patterns, and make a decision about direction.
           </p>
           <br />
